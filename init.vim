@@ -17,12 +17,13 @@ Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
 Plug 'python-mode/python-mode'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'yodiaditya/vim-pydjango'
+Plug 'robhudson/snipmate_for_django'
 call plug#end()
 
 set hidden
 set number 
 set relativenumber
-" set mouse=a
 set inccommand=split
 
 " Show hidden files with NERDTree 
