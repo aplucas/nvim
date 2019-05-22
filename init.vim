@@ -24,7 +24,6 @@ Plug 'vim-scripts/django.vim'
 Plug 'lambdalisue/vim-django-support'
 Plug 'vim-scripts/nginx.vim'
 Plug 'jistr/vim-nerdtree-tabs'
-
 call plug#end()
 
 set hidden
