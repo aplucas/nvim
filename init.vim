@@ -1,7 +1,6 @@
 call plug#begin()
 Plug 'terryma/vim-multiple-cursors'
 Plug 'sheerun/vim-polyglot'
-Plug 'roxma/nvim-completion-manager'
 Plug 'w0rp/ale'
 Plug 'chun-yang/auto-pairs'
 Plug 'sirver/ultisnips'
@@ -28,7 +27,7 @@ call plug#end()
 
 set hidden
 set number 
-" set relativenumber
+set relativenumber
 set inccommand=split
 
 " Show hidden files with NERDTree 
