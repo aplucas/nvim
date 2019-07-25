@@ -23,6 +23,7 @@ Plug 'vim-scripts/django.vim'
 Plug 'lambdalisue/vim-django-support'
 Plug 'vim-scripts/nginx.vim'
 Plug 'jistr/vim-nerdtree-tabs'
+Plug 'valloric/youcompleteme'
 call plug#end()
 
 set hidden
@@ -39,3 +40,6 @@ let g:pdf_convert_on_read=1
 
 "nerdtree_tabs
 let g:nerdtree_tabs_open_on_console_startup=1
+
+"YCM
+let g:ycm_use_clangd = 0
