@@ -24,6 +24,9 @@ Plug 'lambdalisue/vim-django-support'
 Plug 'vim-scripts/nginx.vim'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'valloric/youcompleteme'
+Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'burnettk/vim-angular'
+Plug 'matthewsimo/angular-vim-snippets'
 call plug#end()
 
 set hidden
@@ -43,3 +46,7 @@ let g:nerdtree_tabs_open_on_console_startup=1
 
 "YCM
 let g:ycm_use_clangd = 0
+
+" Mouse
+set mouse=a
+
