@@ -27,6 +27,13 @@ Plug 'valloric/youcompleteme'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'burnettk/vim-angular'
 Plug 'matthewsimo/angular-vim-snippets'
+Plug 'leafgarland/typescript-vim'
+Plug 'tpope/vim-commentary'
+Plug 'altercation/vim-colors-solarized'
+Plug 'icymind/neosolarized'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'joshdick/onedark.vim'
+Plug 'alvan/vim-closetag'
 call plug#end()
 
 set hidden
@@ -50,3 +57,13 @@ let g:ycm_use_clangd = 0
 " Mouse
 set mouse=a
 
+" Theme OneDark
+syntax on
+colorscheme onedark
+let g:onedark_termcolors=256
+let g:onedark_hide_endofbuffer=1
+let g:onedark_terminal_italics=0
+let g:lightline = {
+  \ 'colorscheme': 'onedark',
+  \ }
+let g:airline_theme='onedark'
