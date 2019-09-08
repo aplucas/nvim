@@ -34,6 +34,8 @@ Plug 'icymind/neosolarized'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'joshdick/onedark.vim'
 Plug 'alvan/vim-closetag'
+Plug 'ryanoasis/vim-devicons'
+Plug '907th/vim-auto-save'
 call plug#end()
 
 set hidden
@@ -67,3 +69,9 @@ let g:lightline = {
   \ 'colorscheme': 'onedark',
   \ }
 let g:airline_theme='onedark'
+
+set encoding=UTF-8
+" set guifont=DroidSansMono\ Nerd\ Font\ 11
+
+let g:auto_save = 1  " enable AutoSave on Vim startup
+
