@@ -36,6 +36,8 @@ Plug 'joshdick/onedark.vim'
 Plug 'alvan/vim-closetag'
 Plug 'ryanoasis/vim-devicons'
 Plug '907th/vim-auto-save'
+Plug 'michalliu/sourcebeautify.vim'
+Plug 'ashisha/image.vim'
 call plug#end()
 
 set hidden
@@ -74,4 +76,7 @@ set encoding=UTF-8
 " set guifont=DroidSansMono\ Nerd\ Font\ 11
 
 let g:auto_save = 1  " enable AutoSave on Vim startup
+set tabstop=4
 
+" Atalhos
+nnoremap <Leader>w :silent update<Bar>silent !opera %:p &<CR>
