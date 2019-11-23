@@ -1,5 +1,26 @@
 call plug#begin()
+" DIRETORIO
+Plug 'scrooloose/nerdtree'
+Plug 'xuyuanp/nerdtree-git-plugin' " 
+Plug 'jistr/vim-nerdtree-tabs'
+
+" TEMA
+Plug 'joshdick/onedark.vim'
+
+" IRONES
+Plug 'ryanoasis/vim-devicons'
+
+" GIT
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+
+" Focar na palavra que o cursor está posicionado
+Plug 'vim-scripts/highlight_word_under_cursor.vim'
+
+
+" RECURSOS AVANÇADOS
 Plug 'terryma/vim-multiple-cursors'
+
 Plug 'sheerun/vim-polyglot'
 Plug 'w0rp/ale'
 Plug 'chun-yang/auto-pairs'
@@ -7,12 +28,8 @@ Plug 'sirver/ultisnips'
 Plug 'scrooloose/syntastic'
 Plug 'mattn/emmet-vim'
 Plug 'ervandew/supertab'
-Plug 'scrooloose/nerdtree'
-Plug 'xuyuanp/nerdtree-git-plugin'
-Plug 'tpope/vim-fugitive'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'rking/ag.vim'
-Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
 Plug 'python-mode/python-mode'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -22,7 +39,6 @@ Plug 'rhysd/open-pdf.vim'
 Plug 'vim-scripts/django.vim'
 Plug 'lambdalisue/vim-django-support'
 Plug 'vim-scripts/nginx.vim'
-Plug 'jistr/vim-nerdtree-tabs'
 Plug 'valloric/youcompleteme'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'burnettk/vim-angular'
@@ -32,9 +48,7 @@ Plug 'tpope/vim-commentary'
 Plug 'altercation/vim-colors-solarized'
 Plug 'icymind/neosolarized'
 Plug 'nathanaelkane/vim-indent-guides'
-Plug 'joshdick/onedark.vim'
 Plug 'alvan/vim-closetag'
-Plug 'ryanoasis/vim-devicons'
 Plug '907th/vim-auto-save'
 Plug 'michalliu/sourcebeautify.vim'
 Plug 'ashisha/image.vim'
@@ -44,26 +58,36 @@ Plug 'cwood/vim-django'
 Plug 'joonty/vdebug'
 call plug#end()
 
-set hidden
-set number 
-set relativenumber
-set inccommand=split
+
+" Atalhos
+nnoremap <Leader>w :silent update<Bar>silent !firefox %:p &<CR>
+
+
+" BASIC SETUP:
+syntax enable " enable syntax and plugins (for netrw)
+filetype plugin on
+set nocompatible " enter the current millenium
+set wildmenu " Display all matching files when we tab complete
+" set hidden
+set number " Exibe a linha do arquivo
+set relativenumber " Exibe o número relatuvo
+set inccommand=split " 
+set tabstop=4	" Define a 
+" set mouse=a
+
 
 " Show hidden files with NERDTree 
 let NERDTreeShowHidden=1
+
 
 " Open pdf
 let g:pdf_convert_on_edit=1
 let g:pdf_convert_on_read=1
 
-"nerdtree_tabs
-let g:nerdtree_tabs_open_on_console_startup=1
 
-"YCM
+" YCM
 let g:ycm_use_clangd = 0
 
-" Mouse
-" set mouse=a
 
 " Theme OneDark
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
@@ -97,16 +121,13 @@ let g:airline_theme='onedark'
 set encoding=UTF-8
 set guifont=DroidSansMono\ Nerd\ Font\ 11
 
+
 " AutoSave
 let g:auto_save = 1  " enable AutoSave on Vim startup
-set tabstop=4
-
-" Atalhos
-nnoremap <Leader>w :silent update<Bar>silent !opera %:p &<CR>
 
 
 " VIM-DJANGO
-let g:django_projects = '~/projects' "Sets all projects under project
+" let g:django_projects = '~/projects' "Sets all projects under project
 let g:django_activate_virtualenv = 1 "Try to activate the associated virtualenv
 let g:django_activate_nerdtree = 1 "Try to open nerdtree at the project root.
 
@@ -118,8 +139,21 @@ let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language
 let g:ycm_complete_in_comments = 1 " Completion in comments
 let g:ycm_complete_in_strings = 1 " Completion in string
 
+
 " Ultisnips.vim
 let g:UltiSnipsExpandTrigger       = "<c-j>"
 let g:UltiSnipsJumpForwardTrigger  = "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-p>"
 let g:UltiSnipsListSnippets        = "<c-k>" "List possible snippets based on current file
+
+
+
+
+" -----------------------------------------------------------------------------------
+" 									COMANDOS ESSENCIAIS
+" REFAZER OU DESFAZER:
+" u              desfaz a última mudança (pode ser repetido para diversos comandos)
+" U              desfaz todas as mudanças na última linha editada
+" CTRL-R         refaz as mudanças desfeitas (isto é, um "undo do undo").
+":help undo  	 Para mais ajuda sobre
+"
