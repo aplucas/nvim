@@ -157,4 +157,7 @@ let g:indent_guides_enable_on_vim_startup = 1
 " colorscheme desert256
 set background=dark
 
+" Plugin 'majutsushi/tagbar'
+nmap <F8> :TagbarToggle<CR>
+
 
