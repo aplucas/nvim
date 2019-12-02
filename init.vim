@@ -1,74 +1,72 @@
-call plug#begin()
-" DIRETORIO
-Plug 'scrooloose/nerdtree'
-Plug 'xuyuanp/nerdtree-git-plugin' " 
-Plug 'jistr/vim-nerdtree-tabs'
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
-" TEMA
-Plug 'joshdick/onedark.vim'
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+" call vundle#begin('~/some/path/here')
 
-" IRONES
-Plug 'ryanoasis/vim-devicons'
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
 
 " GIT
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
 
-" Focar na palavra que o cursor está posicionado
-Plug 'vim-scripts/highlight_word_under_cursor.vim'
+" DIRETORIO
+Plugin 'scrooloose/nerdtree'
+Plugin 'xuyuanp/nerdtree-git-plugin' " 
+Plugin 'jistr/vim-nerdtree-tabs'
 
+" Aspas
+Plugin 'tpope/vim-surround'
 
-" RECURSOS AVANÇADOS
-Plug 'terryma/vim-multiple-cursors'
+" Analisador de sintaxe
+Plugin 'scrooloose/syntastic'
 
-Plug 'sheerun/vim-polyglot'
-Plug 'w0rp/ale'
-Plug 'chun-yang/auto-pairs'
-Plug 'sirver/ultisnips'
-Plug 'scrooloose/syntastic'
-Plug 'mattn/emmet-vim'
-Plug 'ervandew/supertab'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'rking/ag.vim'
-Plug 'vim-airline/vim-airline'
-Plug 'python-mode/python-mode'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'yodiaditya/vim-pydjango'
-Plug 'robhudson/snipmate_for_django'
-Plug 'rhysd/open-pdf.vim'
-Plug 'vim-scripts/django.vim'
-Plug 'lambdalisue/vim-django-support'
-Plug 'vim-scripts/nginx.vim'
-Plug 'valloric/youcompleteme'
-Plug 'othree/javascript-libraries-syntax.vim'
-Plug 'burnettk/vim-angular'
-Plug 'matthewsimo/angular-vim-snippets'
-Plug 'leafgarland/typescript-vim'
-Plug 'tpope/vim-commentary'
-Plug 'altercation/vim-colors-solarized'
-Plug 'icymind/neosolarized'
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'alvan/vim-closetag'
-Plug '907th/vim-auto-save'
-Plug 'michalliu/sourcebeautify.vim'
-Plug 'ashisha/image.vim'
-Plug 'sukima/xmledit'
-Plug 'amiorin/vim-project'
-Plug 'cwood/vim-django'
-Plug 'joonty/vdebug'
-call plug#end()
+" Linha inferior
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
+" Comentario
+Plugin 'tpope/vim-commentary'
 
-" Atalhos
-nnoremap <Leader>w :silent update<Bar>silent !firefox %:p &<CR>
+" Identicador de tags - Variaveis, funcões
+Plugin 'majutsushi/tagbar'
 
+" Auto complete
+Plugin 'valloric/youcompleteme'
+" Plugin 'ervandew/supertab'
 
-" BASIC SETUP:
-syntax enable " enable syntax and plugins (for netrw)
-filetype plugin on
-set nocompatible " enter the current millenium
-set wildmenu " Display all matching files when we tab complete
-" set hidden
+" Busca de arquivos
+Plugin 'ctrlpvim/ctrlp.vim'
+
+" Criação de html - '<c-y>,'
+Plugin 'mattn/emmet-vim'
+
+" Aparencia
+Plugin 'nathanaelkane/vim-indent-guides' " Guia de identação
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+" ------------------------------------***--------------------------------------
+
+" MINHAS CONFIGURACOES ESSENCIAIS:
+"
 set number " Exibe a linha do arquivo
 set relativenumber " Exibe o número relatuvo
 set inccommand=split " 
@@ -76,84 +74,87 @@ set tabstop=4	" Define a
 " set mouse=a
 
 
-" Show hidden files with NERDTree 
-let NERDTreeShowHidden=1
+" {{{ BASIC SETUP
+" BASIC SETUP:
+
+" enter the current millenium
+set nocompatible
+
+" enable syntax and plugins (for netrw)
+syntax enable
+filetype plugin on
+
+" FINDING FILES:
+
+" Search down into subfolders
+" Provides tab-completion for all file-related tasks
+set path+=**
+
+" Display all matching files when we tab complete
+set wildmenu
+
+" NOW WE CAN:
+" - Hit tab to :find by partial match
+" - Use * to make it fuzzy
+
+" THINGS TO CONSIDER:
+" - :b lets you autocomplete any open buffer
 
 
-" Open pdf
-let g:pdf_convert_on_edit=1
-let g:pdf_convert_on_read=1
+" TAG JUMPING:
 
+" Create the `tags` file (may need to install ctags first)
+command! MakeTags !ctags -R .
 
-" YCM
-let g:ycm_use_clangd = 0
+" NOW WE CAN:
+" - Use ^] to jump to tag under cursor
+" - Use g^] for ambiguous tags
+" - Use ^t to jump back up the tag stack
 
-
-" Theme OneDark
-"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
-"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
-"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
-if (empty($TMUX))
-  if (has("nvim"))
-    "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-  endif
-  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
-  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
-  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
-  if (has("termguicolors"))
-    set termguicolors
-  endif
-endif
-let g:onedark_color_overrides = {
-\ "black": {"gui": "#2F343F", "cterm": "235", "cterm16": "0" },
-\ "purple": { "gui": "#C678DF", "cterm": "170", "cterm16": "5" }
-\}
-syntax on
-colorscheme onedark
-let g:onedark_termcolors=256
-let g:onedark_hide_endofbuffer=1
-let g:onedark_terminal_italics=0
-let g:lightline = {
-  \ 'colorscheme': 'onedark',
-  \ }
-let g:airline_theme='onedark'
-set encoding=UTF-8
-set guifont=DroidSansMono\ Nerd\ Font\ 11
-
-
-" AutoSave
-let g:auto_save = 1  " enable AutoSave on Vim startup
-
-
-" VIM-DJANGO
-" let g:django_projects = '~/projects' "Sets all projects under project
-let g:django_activate_virtualenv = 1 "Try to activate the associated virtualenv
-let g:django_activate_nerdtree = 1 "Try to open nerdtree at the project root.
-
-
-" YouCompleteMe 
-let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
-let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
-let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
-let g:ycm_complete_in_comments = 1 " Completion in comments
-let g:ycm_complete_in_strings = 1 " Completion in string
-
-
-" Ultisnips.vim
-let g:UltiSnipsExpandTrigger       = "<c-j>"
-let g:UltiSnipsJumpForwardTrigger  = "<c-j>"
-let g:UltiSnipsJumpBackwardTrigger = "<c-p>"
-let g:UltiSnipsListSnippets        = "<c-k>" "List possible snippets based on current file
+" THINGS TO CONSIDER:
+" - This doesn't help if you want a visual list of tags
 
 
 
+" AUTOCOMPLETE:
 
-" -----------------------------------------------------------------------------------
-" 									COMANDOS ESSENCIAIS
-" REFAZER OU DESFAZER:
-" u              desfaz a última mudança (pode ser repetido para diversos comandos)
-" U              desfaz todas as mudanças na última linha editada
-" CTRL-R         refaz as mudanças desfeitas (isto é, um "undo do undo").
-":help undo  	 Para mais ajuda sobre
-"
+" The good stuff is documented in |ins-completion|
+
+" HIGHLIGHTS:
+" - ^x^n for JUST this file
+" - ^x^f for filenames (works with our path trick!)
+" - ^x^] for tags only
+" - ^n for anything specified by the 'complete' option
+
+" NOW WE CAN:
+" - Use ^n and ^p to go back and forth in the suggestion list
+
+
+" CONFIGURACOES DE PLUGINS:
+
+" Plugin 'scrooloose/nerdcommenter'
+" Add spaces after comment delimiters by default
+" let g:NERDSpaceDelims = 1
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+" Add your own custom formats or override the defaults
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+" Enable NERDCommenterToggle to check all selected lines is commented or not 
+let g:NERDToggleCheckAllLines = 1
+
+" Plugin 'nathanaelkane/vim-indent-guides' " Mostra identação
+let g:indent_guides_enable_on_vim_startup = 1
+" colorscheme railscasts2
+" set ts=2 sw=2 et
+" colorscheme desert256
+set background=dark
+
+
