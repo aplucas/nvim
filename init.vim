@@ -16,8 +16,9 @@ Plugin 'airblade/vim-gitgutter'
 
 " DIRETORIO
 Plugin 'scrooloose/nerdtree'
+autocmd vimenter * NERDTree
 Plugin 'xuyuanp/nerdtree-git-plugin' " 
-Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'jistr/vim-nerdtree-tabs' " gt = next tab || gT = previous tab
 
 " Aspas
 Plugin 'tpope/vim-surround'
@@ -169,4 +170,15 @@ set background=dark
 " Plugin 'majutsushi/tagbar'
 nmap <F8> :TagbarToggle<CR>
 
+" Tema Dracula
+Plugin 'dracula/vim', { 'name': 'dracula' }
+syntax on
+colorscheme dracula
 
+" Ícones
+Plugin 'ryanoasis/vim-devicons'
+set encoding=UTF-8
+
+" MarkDown
+Plugin 'plasticboy/vim-markdown'
+let g:vim_markdown_toc_autofit = 1
