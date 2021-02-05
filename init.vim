@@ -13,6 +13,13 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'preservim/nerdcommenter'
 Plug 'ervandew/supertab'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'mattn/emmet-vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'tpope/vim-fugitive'
+Plug 'w0rp/ale'
+Plug 'prettier/vim-prettier'
 
 call plug#end()
 
@@ -100,7 +107,7 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-colorscheme jellybeans
+colorscheme onedark
 
 set nu rnu " relative line numbering
 set clipboard=unnamed " public copy/paste register
@@ -165,3 +172,10 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
+
+" vim-indent-guides
+let g:indent_guides_enable_on_vim_startup = 1
+
+" ale
+let g:ale_sign_error = '❌'
+let g:ale_sign_warning = '⚠️'
