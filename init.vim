@@ -2,6 +2,7 @@ call plug#begin()
 
 " SINTAXE
 Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
@@ -17,6 +18,7 @@ Plug 'morhetz/gruvbox' " Esquema de cores do Intellij
 Plug 'mattn/emmet-vim' " Habilitar o emmet que ajuda na construção de páginas html
 Plug 'tpope/vim-surround' " Fecha parentes, aspaspas etc
 Plug 'preservim/nerdtree' " Explorador de arquivos usando NerdTree 
+Plug 'jistr/vim-nerdtree-tabs' " Tabs do Explorador de arquivos usando NerdTree 
 Plug 'Xuyuanp/nerdtree-git-plugin' " Integração Git para NerdTree 
 Plug 'airblade/vim-gitgutter' " Git Gutter 
 Plug 'vim-airline/vim-airline' " Barra de status
@@ -28,6 +30,11 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " Buscador de arquivos como 
 Plug 'junegunn/fzf.vim' " Buscador de arquivos como o ctrlp
 Plug 'nathanaelkane/vim-indent-guides' 
 Plug 'ryanoasis/vim-devicons' " Ícones 
+Plug 'majutsushi/tagbar' " Minimapa do código com funções
+Plug 'terryma/vim-expand-region' " Expande a seleção - Pressione + para expandir a seleção visual e _ para reduzi-la.
+Plug 'tpope/vim-repeat' " Repetir comandos não nativos ex. Plugins
+Plug 'vim-scripts/restore_view.vim' " Salvar o stado da view e retornr na próxima vex, posição do cursor, as dobras de linhas
+
 
 call plug#end()
 
@@ -46,10 +53,15 @@ autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
 " open files with ctrl-p
 nnoremap <c-p> :Files<cr>
+nnoremap <leader>b :Buffers<cr>
 
 " coc-prettier
 vmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
+
+" Abrindo e fechando dobras
+nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
+vnoremap <Space> zf
 
 " ### coc.nvim ######################################################################
 
@@ -219,6 +231,7 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 " <## nerdtree ######################################################################
 " autocmd VimEnter * NERDTree " Abrir NerdTree por padrão
+" autocmd VimEnter * wincmd p " Editor de Foco
 " autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif " AutoClose NerdTree 
 
 " NERDTree
@@ -226,8 +239,6 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
     \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
-
-autocmd VimEnter * wincmd p " Editor de Foco
 
 " Exit Vim if NERDTree is the only window left.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
@@ -286,3 +297,7 @@ let g:multi_cursor_quit_key            = '<Esc>'
 let g:indent_guides_enable_on_vim_startup = 1
 set ts=2 sw=2 et
 " < ## vim-indent-guides #####################################################################
+
+" < ## tagbar #####################################################################
+nmap <F8> :TagbarToggle<CR>
+" < ## tagbar #####################################################################
